@@ -22,7 +22,7 @@ const ArticleTemplate = ({ data }) => (
 
     {data.article.images &&
       data.article.images.map(image => (
-        <Img fixed={image.localFile.childImageSharp.fixed} />
+        <Img key={image.name} fixed={image.localFile.childImageSharp.fixed} />
       ))}
   </Layout>
 )
@@ -44,6 +44,7 @@ export const query = graphql`
         }
       }
       images {
+        name
         localFile {
           childImageSharp {
             fixed(width: 200, height: 125) {
